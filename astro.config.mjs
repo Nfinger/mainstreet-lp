@@ -6,11 +6,14 @@ import react from '@astrojs/react';
 
 import db from '@astrojs/db';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
       plugins: [tailwindcss()]
     },
 
-  integrations: [react(), db()]
+  integrations: [react(), db()],
+  adapter: vercel()
 });
