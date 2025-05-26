@@ -15,7 +15,12 @@ import { Button } from "@/components/ui/button";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:image" content="/og-image.png" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,31 +33,53 @@ import { Button } from "@/components/ui/button";
 
   <body class="bg-black text-white min-h-screen">
     {/* Header */}
-    <header class="w-full flex items-center justify-start py-4 fixed top-0 left-0 bg-black z-50">
+    <header
+      class="w-full flex items-center justify-start py-4 fixed top-0 left-0 bg-black z-50"
+    >
       <div class="w-full max-w-6xl mx-auto flex items-center justify-between">
         <a href="#hero" class="hover:text-orange-400 transition">
           <img src="/logo.png" alt="Mainstreet Capital" class="max-w-54" />
         </a>
         <nav class="hidden md:flex gap-8 text-lg font-medium">
-          <a href="#why-invest" class="hover:text-orange-400 content-center transition">Why Invest</a>
-          <a href="#demo-deal" class="hover:text-orange-400 content-center transition">Demo Deal</a>
+          <a
+            href="#why-invest"
+            class="hover:text-orange-400 content-center transition"
+            >Why Invest</a
+          >
+          <a
+            href="#demo-deal"
+            class="hover:text-orange-400 content-center transition">Demo Deal</a
+          >
           <a href="#cta" class="cursor-pointer">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded transition-colors">Get Started</Button>
+            <Button
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded transition-colors"
+              >Get Started</Button
+            >
           </a>
         </nav>
       </div>
     </header>
     {/* Hero Section */}
     <main class="flex flex-col items-center w-full pt-32">
-      <section id="hero" class="w-full flex flex-row items-center justify-center pb-12 max-w-6xl mx-auto gap-8 md:gap-16 px-4 md:px-0">
+      <section
+        id="hero"
+        class="w-full flex flex-row items-center justify-center pb-12 max-w-6xl mx-auto gap-8 md:gap-16 px-4 md:px-0"
+      >
         {/* Left: Headline, Subheadline, Form, Supporting Text */}
         <div class="flex-1 flex flex-col justify-center max-w-xl">
-          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Own a piece of Main Street.</h1>
-          <p class="mb-6 text-lg md:text-2xl text-gray-400">Invest in real, profitable small businesses. Earn passive income — just like private equity, without the $1M minimums.</p>
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Own the businesses that keep America running.
+          </h1>
+          <p class="mb-6 text-lg md:text-2xl text-gray-400">
+            Invest in recession-proof Main Street companies—like HVAC, auto
+            repair, and dry cleaning—with as little as $100.
+          </p>
           <div class="mb-2">
             <CTAForm />
           </div>
-          <div class="text-sm text-gray-400 mt-2">Start investing in less than 5 minutes and with as little as $100.</div>
+          <div class="text-sm text-gray-400 mt-2">
+            Start investing in less than 5 minutes and with as little as $100.
+          </div>
         </div>
         {/* Right: Hero Image */}
         <div class="flex-1 flex justify-center items-center">
@@ -64,7 +91,8 @@ import { Button } from "@/components/ui/button";
         </div>
       </section>
       {/* Why Invest Section */}
-      <section id="why-invest"
+      <section
+        id="why-invest"
         class="w-full bg-white text-black py-20 flex flex-col items-center"
       >
         <div
@@ -217,8 +245,87 @@ import { Button } from "@/components/ui/button";
           </div>
         </div>
       </section>
+      {/* How It Works Section */}
+      <section
+        class="w-full text-white py-20 flex flex-col items-center bg-[#181716]"
+      >
+        <div
+          class="text-center mb-4 text-sm tracking-widest text-gray-400 font-medium"
+        >
+          HOW IT WORKS
+        </div>
+        <h2 class="text-4xl md:text-5xl font-semibold mb-12 text-center">
+          How Mainstreet Capital Works
+        </h2>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl w-full px-4"
+        >
+          {/* Step 1 */}
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mb-6"
+            >
+              <span class="text-2xl font-bold">1</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">You Invest</h3>
+            <p class="text-gray-400">
+              Start with as little as $100 to begin your journey as a business
+              owner
+            </p>
+          </div>
+          {/* Step 2 */}
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mb-6"
+            >
+              <span class="text-2xl font-bold">2</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">We Buy Businesses</h3>
+            <p class="text-gray-400">
+              We pool capital to acquire vetted, high-margin Main Street
+              businesses
+            </p>
+          </div>
+          {/* Step 3 */}
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mb-6"
+            >
+              <span class="text-2xl font-bold">3</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">You Earn</h3>
+            <p class="text-gray-400">
+              Receive quarterly distributions from cash flow and benefit from
+              equity growth
+            </p>
+          </div>
+          {/* Step 4 */}
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mb-6"
+            >
+              <span class="text-2xl font-bold">4</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Track & Grow</h3>
+            <p class="text-gray-400">
+              Monitor your ownership and payouts through your personalized
+              dashboard
+            </p>
+          </div>
+        </div>
+        <div class="mt-12">
+          <a href="#cta">
+            <Button
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors"
+            >
+              Start with $100
+            </Button>
+          </a>
+        </div>
+      </section>
       {/* Data-Driven Investing Section */}
-      <section id="demo-deal"
+      <section
+        id="demo-deal"
         class="relative w-full min-h-[500px] flex flex-col items-center justify-center py-20"
       >
         <Image
@@ -231,32 +338,54 @@ import { Button } from "@/components/ui/button";
         <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
         <div class="relative z-20 w-full max-w-6xl mx-auto px-4">
           {/* Headline (full width) */}
-          <h2 class="text-5xl md:text-6xl font-bold mb-4 leading-tight text-white text-left w-full">
+          <h2
+            class="text-5xl md:text-6xl font-bold mb-4 leading-tight text-white text-left w-full"
+          >
             Demo Deal: Local HVAC Company Acquisition
           </h2>
           {/* Deal Title and Description */}
           <div class="mb-10 w-full">
             <div class="text-base text-gray-200 max-w-3xl mb-2">
-              We're acquiring a well-established HVAC business in a growing suburban market. With stable cash flow, strong repeat customers, and low customer acquisition costs, this deal exemplifies the kind of boring-but-beautiful small businesses we bring to our investors. The current owner is retiring, and we'll take over with experienced operators to continue driving profits.
+              We're acquiring a well-established HVAC business in a growing
+              suburban market. With stable cash flow, strong repeat customers,
+              and low customer acquisition costs, this deal exemplifies the kind
+              of boring-but-beautiful small businesses we bring to our
+              investors. The current owner is retiring, and we'll take over with
+              experienced operators to continue driving profits.
             </div>
           </div>
           {/* Key Metrics Grid (full width) */}
           <div class="mb-8 w-full">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 w-full">
-              <div class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md">
-                <span class="text-3xl md:text-4xl font-bold text-white">8</span>
+              <div
+                class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md"
+              >
+                <span class="text-3xl md:text-4xl font-bold text-white">15</span
+                >
                 <span class="text-base text-gray-300">yrs established</span>
               </div>
-              <div class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md">
-                <span class="text-3xl md:text-4xl font-bold text-white">$18.5K</span>
+              <div
+                class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md"
+              >
+                <span class="text-3xl md:text-4xl font-bold text-white"
+                  >$250K</span
+                >
                 <span class="text-base text-gray-300">/mo revenue</span>
               </div>
-              <div class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md">
-                <span class="text-3xl md:text-4xl font-bold text-white">20%</span>
-                <span class="text-base text-gray-300">IRR</span>
+              <div
+                class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md"
+              >
+                <span class="text-3xl md:text-4xl font-bold text-white"
+                  >25%</span
+                >
+                <span class="text-base text-gray-300">target IRR</span>
               </div>
-              <div class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md">
-                <span class="text-3xl md:text-4xl font-bold text-white">95%</span>
+              <div
+                class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md"
+              >
+                <span class="text-3xl md:text-4xl font-bold text-white"
+                  >98%</span
+                >
                 <span class="text-base text-gray-300">occupancy</span>
               </div>
             </div>
@@ -265,24 +394,31 @@ import { Button } from "@/components/ui/button";
           <div class="flex flex-col md:flex-row gap-8 w-full">
             {/* Financial Summary Table (Left) */}
             <div class="flex-1">
-              <table class="min-w-full text-white" style="border-collapse:separate; border-spacing:0;">
+              <table
+                class="min-w-full text-white"
+                style="border-collapse:separate; border-spacing:0;"
+              >
                 <thead>
                   <tr class="text-lg">
-                    <th colspan="2" class="py-4 px-4 text-left font-bold border-b border-white">Financial Summary</th>
+                    <th
+                      colspan="2"
+                      class="py-4 px-4 text-left font-bold border-b border-white"
+                      >Financial Summary</th
+                    >
                   </tr>
                 </thead>
                 <tbody class="text-base">
                   <tr class="border-b border-dashed border-white">
                     <td class="py-3 px-4 font-medium">Annual Revenue</td>
-                    <td class="py-3 px-4 text-right font-bold">$222,000</td>
+                    <td class="py-3 px-4 text-right font-bold">$3,000,000</td>
                   </tr>
                   <tr class="border-b border-dashed border-white">
                     <td class="py-3 px-4 font-medium">Net Operating Income</td>
-                    <td class="py-3 px-4 text-right font-bold">$156,000</td>
+                    <td class="py-3 px-4 text-right font-bold">$1,200,000</td>
                   </tr>
                   <tr class="border-b border-dashed border-white">
                     <td class="py-3 px-4 font-medium">Cap Rate</td>
-                    <td class="py-3 px-4 text-right font-bold">12.8%</td>
+                    <td class="py-3 px-4 text-right font-bold">15.2%</td>
                   </tr>
                   <tr>
                     <td class="py-3 px-4 font-medium">Investment Period</td>
@@ -293,54 +429,91 @@ import { Button } from "@/components/ui/button";
             </div>
             {/* Investment Tiers Table (Right) */}
             <div class="flex-1">
-              <table class="min-w-full text-white" style="border-collapse:separate; border-spacing:0;">
+              <table
+                class="min-w-full text-white"
+                style="border-collapse:separate; border-spacing:0;"
+              >
                 <thead>
                   <tr class="text-lg">
-                    <th class="py-4 px-4 text-left font-bold border-b border-white">&nbsp;</th>
-                    <th class="py-4 px-4 text-center font-bold border-b border-white">Everyday</th>
-                    <th class="py-4 px-4 text-center font-bold border-b border-white">Community</th>
-                    <th class="py-4 px-4 text-center font-bold border-b border-white">Power</th>
+                    <th
+                      class="py-4 px-4 text-left font-bold border-b border-white"
+                      >&nbsp;</th
+                    >
+                    <th
+                      class="py-4 px-4 text-center font-bold border-b border-white"
+                      >Everyday</th
+                    >
+                    <th
+                      class="py-4 px-4 text-center font-bold border-b border-white"
+                      >Community</th
+                    >
+                    <th
+                      class="py-4 px-4 text-center font-bold border-b border-white"
+                      >Power</th
+                    >
                   </tr>
                 </thead>
                 <tbody class="text-base">
                   <tr class="border-b border-dashed border-white">
                     <td class="py-3 px-4 font-medium">Investment</td>
-                    <td class="py-3 px-4 text-center">$250</td>
-                    <td class="py-3 px-4 text-center">$2,500</td>
-                    <td class="py-3 px-4 text-center">$25,000</td>
+                    <td class="py-3 px-4 text-center">$1,000</td>
+                    <td class="py-3 px-4 text-center">$10,000</td>
+                    <td class="py-3 px-4 text-center">$100,000</td>
                   </tr>
                   <tr class="border-b border-dashed border-white">
                     <td class="py-3 px-4 font-medium">Ownership Stake</td>
-                    <td class="py-3 px-4 text-center">~0.05%</td>
-                    <td class="py-3 px-4 text-center">~0.5%</td>
-                    <td class="py-3 px-4 text-center">~5%</td>
+                    <td class="py-3 px-4 text-center">~0.02%</td>
+                    <td class="py-3 px-4 text-center">~0.2%</td>
+                    <td class="py-3 px-4 text-center">~2%</td>
                   </tr>
                   <tr class="border-b border-dashed border-white">
                     <td class="py-3 px-4 font-medium">Annual Income</td>
-                    <td class="py-3 px-4 text-center">~$32/year</td>
-                    <td class="py-3 px-4 text-center">~$320/year</td>
-                    <td class="py-3 px-4 text-center">~$3,200/year</td>
+                    <td class="py-3 px-4 text-center">~$240/year</td>
+                    <td class="py-3 px-4 text-center">~$2,400/year</td>
+                    <td class="py-3 px-4 text-center">~$24,000/year</td>
                   </tr>
                   <tr>
                     <td class="py-3 px-4 font-medium">5-Year Return</td>
-                    <td class="py-3 px-4 text-center">~$645</td>
-                    <td class="py-3 px-4 text-center">~$6,450</td>
-                    <td class="py-3 px-4 text-center">~$64,500</td>
+                    <td class="py-3 px-4 text-center">~$3,052</td>
+                    <td class="py-3 px-4 text-center">~$30,520</td>
+                    <td class="py-3 px-4 text-center">~$305,200</td>
                   </tr>
                 </tbody>
               </table>
+              <div class="mt-4 text-sm text-gray-300">
+                <p class="mb-2">
+                  * Returns are calculated using a 20% target IRR, which
+                  includes both quarterly distributions and final exit value.
+                </p>
+                <p class="mb-2">
+                  ** The 5-year return includes your initial investment plus
+                  accumulated returns.
+                </p>
+                <p>
+                  *** These are projected returns and actual results may vary
+                  based on business performance.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
       {/* Final CTA Section */}
-      <section id="cta"
+      <section
+        id="cta"
         class="w-full bg-[#23221e] text-white py-24 flex flex-col items-center"
       >
-        <h2 class="text-5xl md:text-6xl font-bold mb-10 text-center">
-          Own a piece<br />of Main Street
+        <h2 class="text-5xl md:text-6xl font-bold mb-6 text-center">
+          Invest in America's most reliable businesses.
         </h2>
-        <div class="w-full max-w-md flex flex-col items-center">
+        <p class="text-xl text-gray-300 mb-10 text-center max-w-2xl">
+          Join Mainstreet Capital and start earning real income from
+          recession-proof companies—without needing millions or a finance
+          degree.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-4 w-full max-w-md items-center"
+        >
           <CTAForm />
         </div>
       </section>
@@ -350,16 +523,32 @@ import { Button } from "@/components/ui/button";
       >
         <div class="max-w-7xl mx-auto px-4">
           <div class="flex flex-col items-center gap-4 mb-8">
-            <a href="#hero" class="hover:text-orange-400 transition flex items-center gap-2 mb-2">
-              <Image src="/logo-color.png" alt="Mainstreet Capital" width={256} height={256} />
+            <a
+              href="#hero"
+              class="hover:text-orange-400 transition flex items-center gap-2 mb-2"
+            >
+              <Image
+                src="/logo-color.png"
+                alt="Mainstreet Capital"
+                width={256}
+                height={256}
+              />
             </a>
             <nav class="flex gap-8 text-base font-medium mb-2">
-              <a href="#why-invest" class="hover:text-orange-400 transition">Why Invest</a>
-              <a href="#demo-deal" class="hover:text-orange-400 transition">Demo Deal</a>
-              <a href="#cta" class="hover:text-orange-400 transition">Get Started</a>
+              <a href="#why-invest" class="hover:text-orange-400 transition"
+                >Why Invest</a
+              >
+              <a href="#demo-deal" class="hover:text-orange-400 transition"
+                >Demo Deal</a
+              >
+              <a href="#cta" class="hover:text-orange-400 transition"
+                >Get Started</a
+              >
             </nav>
           </div>
-          <div class="text-xs text-gray-500 text-center">© 2025 All rights reserved</div>
+          <div class="text-xs text-gray-500 text-center">
+            © 2025 All rights reserved
+          </div>
         </div>
       </footer>
     </main>
