@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { Image } from "astro:assets";
+import Analytics from '@vercel/analytics/astro'
 
 // Component Imports
 import { Toaster } from "@/components/ui/sonner";
@@ -553,5 +554,6 @@ import { Button } from "@/components/ui/button";
       </footer>
     </main>
     <Toaster />
+    <Analytics />
   </body>
 </html>
