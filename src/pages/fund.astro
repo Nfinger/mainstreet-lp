@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import FundDetails from "@/components/FundDetails.astro";
+import MainLayout from "@/layouts/main.astro";
+---
+
+<MainLayout content={{ title: "Mainstreet Capital - Fund Details" }}>
+    {/* Header */}
+    <header
+      class="w-full flex items-center justify-start py-4 fixed top-0 left-0 bg-black z-50"
+    >
+      <div class="w-full max-w-6xl mx-auto flex items-center justify-between">
+        <a href="/" class="hover:text-orange-400 transition">
+          <img src="/logo.png" alt="Mainstreet Capital" class="max-w-54" />
+        </a>
+      </div>
+    </header>
+  <FundDetails  />
+  {/* Footer */}
+  <footer
+  class="w-full bg-white text-gray-800 pt-16 pb-8 border-t border-gray-200"
+>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-col items-center gap-4 mb-8">
+      <a
+        href="/"
+        class="hover:text-orange-400 transition flex items-center gap-2 mb-2"
+      >
+        <Image
+          src="/logo-color.png"
+          alt="Mainstreet Capital"
+          width={256}
+          height={256}
+        />
+      </a>
+    </div>
+    <div class="text-xs text-gray-500 text-center">
+      © 2025 All rights reserved
+    </div>
+  </div>
+</footer>
+</MainLayout>

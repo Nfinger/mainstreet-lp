@@ -1,0 +1,562 @@
+---
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { FundChart } from "@/components/FundChart";
+import CTAForm from "./CTAForm.astro";
+
+const fundJson = {
+  initial_investment: 10000,
+  total_appreciation: 35800,
+  total_distributions: 27900,
+  current_investment_value: 40800,
+  data: [
+    {
+      date: "2025-01-01",
+      value: 10000,
+      cumulative_distribution: 0,
+    },
+    {
+      date: "2026-01-01",
+      value: 13533,
+      cumulative_distribution: 5500,
+    },
+    {
+      date: "2027-01-01",
+      value: 18200,
+      cumulative_distribution: 11100,
+    },
+    {
+      date: "2028-01-01",
+      value: 23200,
+      cumulative_distribution: 16900,
+    },
+    {
+      date: "2029-01-01",
+      value: 28200,
+      cumulative_distribution: 22700,
+    },
+    {
+      date: "2030-01-01",
+      value: 40800,
+      cumulative_distribution: 27900,
+    },
+  ],
+};
+
+function formatCurrency(value: number): string {
+  return `$${value.toLocaleString()}`;
+}
+---
+
+<main class="bg-[#23221e] min-h-screen text-white font-sans pt-10">
+  <section class="max-w-6xl mx-auto pt-16 pb-12 px-4">
+    <div class="flex flex-col md:flex-row md:items-start gap-10">
+      {/* Main Content */}
+      <div class="flex-1 min-w-0">
+        <h1
+          class="text-5xl md:text-6xl font-serif font-bold mb-4 leading-tight tracking-tight text-white"
+        >
+          Mainstreet Capital Fund I
+        </h1>
+        <p class="text-base md:text-lg text-gray-300 mb-8 max-w-2xl">
+          Mainstreet Capital Fund I is designed to generate strong monthly cash
+          distributions and long-term equity appreciation by acquiring and
+          operating recession-resistant, high-margin small businesses across the
+          U.S.
+        </p>
+        <p class="text-base md:text-lg text-gray-300 mb-8 max-w-2xl">
+          Our strategy focuses on essential industrial services, legacy
+          founder-led businesses, and B2B companies with recurring revenue,
+          where operational modernization and ownership transition unlock
+          immediate value.
+        </p>
+        {/* Key Stats */}
+        <div class="flex flex-row gap-4 mb-10">
+          <div
+            class="flex-1 bg-[#181716] rounded shadow-sm flex flex-col items-center justify-center py-6 min-w-[160px]"
+          >
+            <div class="text-3xl font-bold mb-1 text-white">8.6%</div>
+            <div class="text-xs text-gray-400">Annualized return target</div>
+          </div>
+          <div
+            class="flex-1 bg-[#181716] rounded shadow-sm flex flex-col items-center justify-center py-6 min-w-[160px]"
+          >
+            <div class="text-3xl font-bold mb-1 text-white">$1.5M</div>
+            <div class="text-xs text-gray-400">Initial raise target</div>
+          </div>
+          <div
+            class="flex-1 bg-[#181716] rounded shadow-sm flex flex-col items-center justify-center py-6 min-w-[160px]"
+          >
+            <div class="text-3xl font-bold mb-1 text-white">6.1%</div>
+            <div class="text-xs text-gray-400">
+              Annualized distribution rate (target)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Sidebar */}
+      <aside class="w-full md:w-80 flex-shrink-0 mt-10 md:mt-0">
+        <Card
+          className="bg-[#181716] border border-gray-700 rounded-xl shadow-sm"
+        >
+          <CardContent className="p-6">
+            <table class="w-full text-sm mb-6">
+              <tbody>
+                <tr class="border-b border-dashed border-gray-700">
+                  <td class="py-2 text-gray-400">Fund category</td>
+                  <td class="py-2 text-right font-semibold text-white">
+                    Private Equity
+                  </td>
+                </tr>
+                <tr class="border-b border-dashed border-gray-700">
+                  <td class="py-2 text-gray-400">Objective</td>
+                  <td class="py-2 text-right font-semibold text-orange-500">
+                    Income & Appreciation
+                  </td>
+                </tr>
+                <tr class="border-b border-dashed border-gray-700">
+                  <td class="py-2 text-gray-400">Inception date</td>
+                  <td class="py-2 text-right font-semibold text-white">
+                    July 1, 2025
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2 text-gray-400"> Current NAV per share </td>
+                  <td class="py-2 text-right font-semibold text-white"
+                    >$10.00</td
+                  >
+                </tr>
+              </tbody>
+            </table>
+            <CTAForm />
+          </CardContent>
+        </Card>
+      </aside>
+    </div>
+    <div class="flex flex-col gap-4">
+      {/* Tabs */}
+      <div class="border-b border-gray-700 mb-8">
+        <nav class="flex gap-8 text-base font-medium">
+          <a
+            href="#fund-strategy"
+            class="py-2 border-b-2 border-orange-500 text-white"
+          >
+            Fund strategy
+          </a>
+          <a
+            href="#hypothetical-growth"
+            class="py-2 text-gray-400 hover:text-white transition"
+          >
+            Hypothetical growth
+          </a>
+          <a
+            href="#how-it-works"
+            class="py-2 text-gray-400 hover:text-white transition"
+          >
+            How it works
+          </a>
+          <a
+            href="#assets"
+            class="py-2 text-gray-400 hover:text-white transition"
+          >
+            Assets
+          </a>
+        </nav>
+      </div>
+      {/* Fund Strategy Section */}
+      <section id="fund-strategy" class="scroll-mt-24">
+        <div class="flex flex-col md:flex-row gap-10">
+          <div class="flex-1 min-w-0">
+            <h2 class="text-2xl font-serif font-semibold mb-4 text-white">
+              Fund strategy
+            </h2>
+            <p class="mb-4 text-base text-gray-300 max-w-2xl">
+              Mainstreet Capital Fund I is designed to deliver long-term,
+              cash-generating returns from a diversified portfolio of
+              high-margin, recession-resilient small businesses with entrenched
+              B2B customer bases.
+            </p>
+            <p class="mb-4 text-base text-gray-300 max-w-2xl">
+              The fund primarily invests in industrial and service-based
+              businesses across business-friendly states like Texas and Florida,
+              with a focus on founder-owned companies facing generational
+              transitions. Our strategy targets sectors where operational
+              modernization and centralized platform integration can rapidly
+              unlock value.
+            </p>
+            <div class="mb-6">
+              <span class="font-semibold text-white">
+                Investment strategy drivers:
+              </span>
+              <ul class="list-disc pl-6 mt-2 space-y-2 text-gray-300">
+                <li>
+                  <span class="font-medium text-orange-500 underline">
+                    Blue-collar backbone businesses
+                  </span>
+                  : We target industrial service providers like G&C Contracting—profitable,
+                  founder-led companies with skilled labor forces and essential roles
+                  in America's energy, infrastructure, and logistics ecosystems.
+                  These businesses often fly under institutional radars but offer
+                  stable recurring revenue, high EBITDA margins, and strong customer
+                  retention through multi-year Master Service Agreements (MSAs).
+                </li>
+                <li>
+                  <span class="font-medium text-orange-500 underline">
+                    Succession-driven acquisitions
+                  </span>
+                  : Many small business owners are approaching retirement without
+                  clear succession plans. We acquire these companies outright and
+                  retain institutional knowledge through structured transitions,
+                  often with seller financing. This approach minimizes execution
+                  risk and preserves client relationships while enabling value creation
+                  through professionalized ownership.
+                </li>
+                <li>
+                  <span class="font-medium text-orange-500 underline">
+                    Operational modernization
+                  </span>
+                  : We improve acquired businesses by centralizing HR, payroll, analytics,
+                  and CRM operations, upgrading tech stacks, and optimizing pricing
+                  and staffing models. Our operational playbook is designed to compound
+                  cash flow while preserving the culture and customer trust these
+                  companies were built on.
+                </li>
+                <li>
+                  <span class="font-medium text-orange-500 underline">
+                    Low entry multiples, high cash flow
+                  </span>
+                  : We seek sub-4x AEBITDA acquisition multiples in markets with
+                  limited buyer competition. Our targets typically require minimal
+                  ongoing capex, offer working capital self-sufficiency, and allow
+                  for strong free cash flow distributions from day one.
+                </li>
+                <li>
+                  <span class="font-medium text-orange-500 underline">
+                    Geographic edge
+                  </span>
+                  : The fund's initial focus includes underserved regions of Texas
+                  and the Gulf Coast, where industrial demand is growing but valuations
+                  remain attractive. These areas also benefit from favorable labor
+                  pools, logistics infrastructure, and regulatory environments.
+                </li>
+                <li>
+                  <span class="font-medium text-orange-500 underline">
+                    Opportunistic roll-ups
+                  </span>
+                  : Where strategic, we will pursue vertical consolidation—acquiring
+                  adjacent businesses in the same service niche to build regional
+                  market share, drive purchasing power, and improve route density.
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <span class="font-semibold">Fund type</span>
+              <p class="mt-2 text-base text-gray-300 max-w-2xl">
+                Mainstreet Capital Fund I is structured as a non-diversified,
+                closed-end fund operated as a pooled NAV vehicle with quarterly
+                liquidity windows and monthly distribution targets.
+              </p>
+            </div>
+          </div>
+          {/* Right column: Asset type and allocation */}
+          <div class="w-full md:w-80 flex-shrink-0 flex flex-col gap-8">
+            <div>
+              <div class="text-base font-bold text-white mt-6 mb-2">
+                Asset type
+              </div>
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-300">Industrial Services</span>
+                  <span class="flex items-center gap-2">
+                    <span class="font-semibold text-white">70.0%</span>
+                  </span>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-300">Facility Maintenance</span>
+                  <span class="flex items-center gap-2">
+                    <span class="font-semibold text-white">20.0%</span>
+                  </span>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-300">Specialty B2B Services</span>
+                  <span class="flex items-center gap-2">
+                    <span class="font-semibold text-white">10.0%</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="text-base font-bold text-white mt-6 mb-2">
+                Strategy allocation
+              </div>
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-300">Core cash flow</span>
+                  <span class="font-semibold text-white">40.0%</span>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-300">Value add via modernization</span>
+                  <span class="font-semibold text-white">40.0%</span>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-300">Opportunistic consolidation</span>
+                  <span class="font-semibold text-white">20.0%</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="text-base font-bold text-white mt-6 mb-2">
+                Distribution frequency
+              </div>
+              <div class="text-sm text-gray-300">Monthly</div>
+            </div>
+            <div>
+              <div class="text-base font-bold text-white mt-6 mb-2">
+                Tax reporting
+              </div>
+              <div class="text-sm text-gray-300">Form K-1</div>
+            </div>
+            <div>
+              <div class="text-base font-bold text-white mt-6 mb-2">
+                Management fee
+              </div>
+              <div class="text-sm text-gray-300">1.50% of AUM</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Hypothetical Growth Section */}
+      <section id="hypothetical-growth" class="scroll-mt-24 py-8">
+        <h2 class="text-2xl font-serif font-semibold mb-4 text-white">
+          Hypothetical growth of $10,000
+        </h2>
+        <div class="mb-8 text-xs md:text-sm text-gray-400 italic max-w-3xl">
+          Hypothetical performance of investment between Jan 2021 and today with
+          dividend reinvestment enabled. <span class="font-bold not-italic"
+            >Past performance does not guarantee future results.</span
+          >
+        </div>
+        <div
+          class="mb-10 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-gray-700 bg-[#181716] rounded-xl shadow-sm overflow-hidden"
+        >
+          <div
+            class="flex-1 flex flex-col items-center justify-center px-8 py-8"
+          >
+            <div class="text-base font-medium text-gray-400 mb-2 text-center">
+              Initial investment value
+            </div>
+            <div class="text-2xl font-semibold text-white text-center">
+              {formatCurrency(fundJson.initial_investment)}
+            </div>
+          </div>
+          <div
+            class="flex-1 flex flex-col items-center justify-center px-8 py-8"
+          >
+            <div class="text-base font-medium text-gray-400 mb-2 text-center">
+              Total appreciation
+            </div>
+            <div class="text-2xl font-semibold text-white text-center">
+              {formatCurrency(fundJson.total_appreciation)}
+            </div>
+          </div>
+          <div
+            class="flex-1 flex flex-col items-center justify-center px-8 py-8"
+          >
+            <div class="text-base font-medium text-gray-400 mb-2 text-center">
+              Total distributions
+            </div>
+            <div class="text-2xl font-semibold text-white text-center">
+              {formatCurrency(fundJson.total_distributions)}
+            </div>
+          </div>
+          <div
+            class="flex-1 flex flex-col items-center justify-center px-8 py-8"
+          >
+            <div class="text-base font-medium text-gray-400 mb-2 text-center">
+              Current investment value
+            </div>
+            <div class="text-2xl font-semibold text-white text-center">
+              {formatCurrency(fundJson.current_investment_value)}
+            </div>
+          </div>
+        </div>
+        <FundChart client:load data={fundJson.data} />
+      </section>
+      {/* How it works */}
+      <section id="how-it-works" class="scroll-mt-24 py-8">
+        <h2 class="text-2xl font-serif font-semibold mb-4 text-white">
+          How it works
+        </h2>
+        <p class="mb-6 text-base text-gray-300 max-w-3xl">
+          The Mainstreet Interval Fund is designed to provide monthly income and
+          long-term wealth creation through direct ownership in high-margin,
+          cash-flowing businesses across recession-resistant industries.
+        </p>
+        <p class="mb-8 text-base text-gray-300 max-w-3xl">
+          We pool investor capital to acquire, operate, and improve small
+          businesses, distributing profits regularly and compounding returns
+          over time.
+        </p>
+        <div class="mb-6">
+          <span class="font-semibold text-white">Investment process:</span>
+          <ul class="list-disc pl-6 mt-4 space-y-4 text-gray-300">
+            <li>
+              <span class="font-medium text-orange-500"
+                >Accessible investing</span
+              >: Investors can get started with as little as $500. Funds are
+              pooled into a diversified portfolio of established, privately held
+              businesses—no picking individual companies required.
+            </li>
+            <li>
+              <span class="font-medium text-orange-500"
+                >Direct ownership in operating companies</span
+              >: We acquire small businesses with strong fundamentals,
+              experienced teams, and retiring owners. Our internal team then
+              oversees operations, modernizes systems, and scales revenue
+              through operational improvements.
+            </li>
+            <li>
+              <span class="font-medium text-orange-500"
+                >Monthly distributions</span
+              >: As our businesses generate profits, we pay out a portion of
+              free cash flow to investors on a monthly basis—similar to
+              dividends. These distributions are designed to provide consistent,
+              passive income.
+            </li>
+            <li>
+              <span class="font-medium text-orange-500"
+                >NAV-based structure</span
+              >: The fund calculates Net Asset Value (NAV) monthly, factoring in
+              both operating performance and asset appreciation. This value
+              determines each investor's share of distributions and provides
+              transparency on performance.
+            </li>
+            <li>
+              <span class="font-medium text-orange-500"
+                >Reinvestment and growth</span
+              >: Investors can choose to reinvest distributions, compounding
+              returns over time. As the fund grows through new acquisitions and
+              business improvements, long-term value appreciation can complement
+              monthly income.
+            </li>
+          </ul>
+        </div>
+      </section>
+      {/* Assets Section */}
+      <section id="assets" class="scroll-mt-24 py-8">
+        <h2 class="text-2xl font-serif font-semibold mb-4 text-white">
+          Assets
+        </h2>
+        <div class="grid grid-cols-1 gap-6">
+          <div
+            class="bg-[#181716] border border-gray-700 rounded-xl shadow-sm p-6"
+          >
+            <div class="flex flex-col items-center text-center">
+              <div
+                class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2 text-white">
+                Acquisition in Progress
+              </h3>
+              <p class="text-gray-400 mb-4 max-w-2xl">
+                We are currently in the process of acquiring our first asset.
+                Due to confidentiality agreements, we cannot disclose specific
+                details at this time. This acquisition aligns with our strategy
+                of targeting essential industrial services and legacy
+                founder-led businesses.
+              </p>
+              <div
+                class="flex flex-wrap justify-center gap-4 text-sm text-gray-500"
+              >
+                <div class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>Under NDA</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>Due Diligence Phase</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>Industrial Services</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* CTA */}
+      <section id="cta" class="scroll-mt-24 py-8">
+        <h2
+          class="text-2xl md:text-5xl font-serif font-bold mb-6 text-white text-center"
+        >
+          Invest in real businesses. Earn real returns.
+        </h2>
+        <p
+          class="mb-6 text-base md:text-xl text-gray-300 max-w-3xl text-center mx-auto"
+        >
+          The Mainstreet Interval Fund gives you access to the kind of private
+          business ownership once reserved for institutional investors and
+          insiders. Backed by operational expertise, designed for monthly
+          income, and built for long-term growth.
+        </p>
+        <div
+          class="flex flex-col md:flex-row gap-4 justify-center w-1/2 mx-auto"
+        >
+          <CTAForm />
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
