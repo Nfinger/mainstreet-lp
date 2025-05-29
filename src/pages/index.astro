@@ -19,7 +19,10 @@ import MainLayout from "@/layouts/main.astro";
   >
     <div class="w-full max-w-6xl mx-auto flex items-center justify-between">
       <a href="#hero" class="hover:text-orange-400 transition pl-1 flex items-center">
-        <img src="/logo.png" alt="Mainstreet Capital" class="max-w-[160px] w-full h-auto" />
+        <picture>
+          <source srcset="/logo.webp" type="image/webp" />
+          <img src="/logo.png" alt="Mainstreet Capital" class="max-w-[160px] w-full h-auto" />
+        </picture>
       </a>
       <!-- Desktop Nav -->
       <nav class="hidden md:flex gap-8 text-lg font-sans font-normal">
