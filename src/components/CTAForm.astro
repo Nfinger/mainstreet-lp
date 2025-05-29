@@ -4,9 +4,9 @@ import { Input } from "@/components/ui/input"
 ---
 
 <form class="space-y-2 w-full flex flex-col">
-  <div class="flex gap-2">
-    <Input placeholder="Email Address" name="email" aria-describedby="error" />
-    <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded transition-colors">Join the waitlist</Button>
+  <div class="flex flex-col sm:flex-row gap-2 w-full">
+    <Input className="flex-1" placeholder="Email Address" name="email" aria-describedby="error" />
+    <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded transition-colors w-full sm:w-auto">Join the waitlist</Button>
   </div>
   <p id="error" class="text-destructive"></p>
   <p id="success" class="text-success hidden">You're on the waitlist!</p>

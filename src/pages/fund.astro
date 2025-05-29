@@ -7,12 +7,22 @@ import MainLayout from "@/layouts/main.astro";
 <MainLayout content={{ title: "Mainstreet Capital - Fund Details" }}>
     {/* Header */}
     <header
-      class="w-full flex items-center justify-start py-4 fixed top-0 left-0 bg-black z-50"
+      class="w-full flex items-center justify-start py-4 px-4 md:px-0 fixed top-0 left-0 bg-black z-50"
     >
       <div class="w-full max-w-6xl mx-auto flex items-center justify-between">
-        <a href="/" class="hover:text-orange-400 transition">
-          <img src="/logo.png" alt="Mainstreet Capital" class="max-w-54" />
+        <a href="/" class="hover:text-orange-400 transition pl-1 flex items-center">
+          <img src="/logo.png" alt="Mainstreet Capital" class="max-w-[160px] w-full h-auto" />
         </a>
+        <!-- Hamburger for Mobile (future nav) -->
+        <button id="mobile-menu-btn" class="md:hidden flex items-center px-2 py-1 text-white focus:outline-none" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        <!-- Mobile Nav Overlay (future links) -->
+        <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-95 z-50 flex flex-col items-center justify-center gap-8 text-2xl font-semibold text-white hidden md:hidden transition-all duration-200">
+          <button class="absolute top-6 right-6 text-white" aria-label="Close menu" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
       </div>
     </header>
   <FundDetails  />

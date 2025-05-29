@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { Image } from "astro:assets";
+import { useState } from 'react';
 
 // Component Imports
 import CTAForm from "@/components/CTAForm.astro";
@@ -14,42 +15,54 @@ import MainLayout from "@/layouts/main.astro";
 <MainLayout content={{ title: "Mainstreet Capital" }}>
   {/* Header */}
   <header
-    class="w-full flex items-center justify-start py-4 fixed top-0 left-0 bg-black z-50"
+    class="w-full flex items-center justify-start py-4 px-4 md:px-0 fixed top-0 left-0 bg-black z-50"
   >
     <div class="w-full max-w-6xl mx-auto flex items-center justify-between">
-      <a href="#hero" class="hover:text-orange-400 transition">
-        <img src="/logo.png" alt="Mainstreet Capital" class="max-w-54" />
+      <a href="#hero" class="hover:text-orange-400 transition pl-1 flex items-center">
+        <img src="/logo.png" alt="Mainstreet Capital" class="max-w-[160px] w-full h-auto" />
       </a>
-      <nav class="hidden md:flex gap-8 text-lg font-medium">
-        <a
-          href="#why-invest"
-          class="hover:text-orange-400 content-center transition">Why Invest</a
-        >
-        <a
-          href="#demo-deal"
-          class="hover:text-orange-400 content-center transition">Demo Deal</a
-        >
-        <a
-          href="/fund"
-          class="hover:text-orange-400 content-center transition">Fund Details</a
-        >
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex gap-8 text-lg font-sans font-normal">
+        <a href="#why-invest" class="hover:text-orange-400 content-center transition">Why Invest</a>
+        <a href="#demo-deal" class="hover:text-orange-400 content-center transition">Demo Deal</a>
+        <a href="/fund" class="hover:text-orange-400 content-center transition">Fund Details</a>
         <a href="#cta" class="cursor-pointer">
-          <Button
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded transition-colors"
-            >Get Started</Button
-          >
+          <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded transition-colors">Get Started</Button>
         </a>
       </nav>
+      <!-- Hamburger for Mobile -->
+      <button id="mobile-menu-btn" class="md:hidden flex items-center px-2 py-1 text-white focus:outline-none" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+      <!-- Mobile Nav Overlay -->
+      <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-95 z-50 flex flex-col items-center justify-center gap-8 text-2xl font-semibold text-white hidden md:hidden transition-all duration-200">
+        <a href="#why-invest" class="hover:text-orange-400" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Why Invest</a>
+        <a href="#demo-deal" class="hover:text-orange-400" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Demo Deal</a>
+        <a href="/fund" class="hover:text-orange-400" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Fund Details</a>
+        <a href="#cta" class="hover:text-orange-400" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Get Started</a>
+        <button class="absolute top-6 right-6 text-white" aria-label="Close menu" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+          <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
     </div>
   </header>
   {/* Hero Section */}
   <main class="flex flex-col items-center w-full pt-32">
     <section
       id="hero"
-      class="w-full flex flex-row items-center justify-center pb-12 max-w-6xl mx-auto gap-8 md:gap-16 px-4 md:px-0"
+      class="w-full flex flex-col md:flex-row items-center justify-center pb-12 max-w-6xl mx-auto gap-8 md:gap-16 px-4 md:px-0 relative overflow-hidden"
     >
+      {/* Mobile-only gradient + image background */}
+      <div class="absolute inset-0 h-full w-full md:hidden z-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/90 to-black/40 z-10"></div>
+        <img
+          src="/hero.png"
+          alt="Main Street at sunset with shops and trees"
+          class="w-full h-full object-cover blur-[1px] opacity-60 z-0"
+        />
+      </div>
       {/* Left: Headline, Subheadline, Form, Supporting Text */}
-      <div class="flex-1 flex flex-col justify-center max-w-xl">
+      <div class="flex-1 flex flex-col justify-center max-w-xl w-full md:w-1/2 mb-8 md:mb-0 relative z-20">
         <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
           Own the businesses that keep America running.
         </h1>
@@ -65,11 +78,11 @@ import MainLayout from "@/layouts/main.astro";
         </div>
       </div>
       {/* Right: Hero Image */}
-      <div class="flex-1 flex justify-center items-center">
+      <div class="hidden md:flex flex-1 items-center justify-center w-full md:w-1/2">
         <img
           src="/hero.png"
           alt="Main Street at sunset with shops and trees"
-          class="rounded-lg shadow-xl w-full object-cover"
+          class="rounded-lg shadow-xl w-3/4 max-w-xs md:w-full md:max-w-full object-cover"
         />
       </div>
     </section>
@@ -83,17 +96,17 @@ import MainLayout from "@/layouts/main.astro";
       >
         WHY INVEST WITH MAINSTREET CAPITAL
       </div>
-      <h2 class="text-4xl md:text-5xl font-semibold mb-12">
+      <h2 class="text-2xl md:text-5xl font-semibold mb-6 md:mb-12 text-center">
         Smart, Simple Investing in Real Businesses
       </h2>
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full px-4"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl w-full px-2 md:px-4"
       >
         {/* Card 1 */}
         <div
-          class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-start gap-4 col-span-1"
+          class="bg-white rounded-xl shadow-lg p-4 md:p-8 flex flex-col items-start gap-3 md:gap-4 col-span-1 w-full"
         >
-          <span class="text-3xl text-orange-500">
+          <span class="text-2xl md:text-3xl text-orange-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -109,17 +122,17 @@ import MainLayout from "@/layouts/main.astro";
               ></path></svg
             >
           </span>
-          <h3 class="text-xl font-semibold">Diversify Your Portfolio</h3>
-          <p class="text-gray-700">
+          <h3 class="text-base md:text-xl font-semibold">Diversify Your Portfolio</h3>
+          <p class="text-gray-700 text-base md:text-lg">
             Move beyond stocks and bonds by investing in cash-flowing small
             businesses across the U.S.
           </p>
         </div>
         {/* Card 2 */}
         <div
-          class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-start gap-4 col-span-1"
+          class="bg-white rounded-xl shadow-lg p-4 md:p-8 flex flex-col items-start gap-3 md:gap-4 col-span-1 w-full"
         >
-          <span class="text-3xl text-orange-500"
+          <span class="text-2xl md:text-3xl text-orange-500"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -139,17 +152,17 @@ import MainLayout from "@/layouts/main.astro";
                 rx="2"></rect><path d="M3 10h18"></path></svg
             ></span
           >
-          <h3 class="text-xl font-semibold">Earn Passive Income</h3>
-          <p class="text-gray-700">
+          <h3 class="text-base md:text-xl font-semibold">Earn Passive Income</h3>
+          <p class="text-gray-700 text-base md:text-lg">
             Receive quarterly distributions from your investments, just like
             institutional investors.
           </p>
         </div>
         {/* Card 3 */}
         <div
-          class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-start gap-4 col-span-1"
+          class="bg-white rounded-xl shadow-lg p-4 md:p-8 flex flex-col items-start gap-3 md:gap-4 col-span-1 w-full"
         >
-          <span class="text-3xl text-orange-500"
+          <span class="text-2xl md:text-3xl text-orange-500"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -164,19 +177,19 @@ import MainLayout from "@/layouts/main.astro";
               ><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg
             ></span
           >
-          <h3 class="text-xl font-semibold">Invest in Real Assets</h3>
-          <p class="text-gray-700">
+          <h3 class="text-base md:text-xl font-semibold">Invest in Real Assets</h3>
+          <p class="text-gray-700 text-base md:text-lg">
             Back tangible businesses with proven revenue, not speculative
             startups or crypto.
           </p>
         </div>
       </div>
-      <div class="flex flex-col gap-8 w-full max-w-6xl px-4 lg:flex-row mt-8">
+      <div class="flex flex-col gap-6 md:gap-8 w-full max-w-6xl px-2 md:px-4 lg:flex-row mt-8">
         {/* Card 4 */}
         <div
-          class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-start gap-4 flex-1"
+          class="bg-white rounded-xl shadow-lg p-4 md:p-8 flex flex-col items-start gap-3 md:gap-4 flex-1 w-full"
         >
-          <span class="text-3xl text-orange-500"
+          <span class="text-2xl md:text-3xl text-orange-500"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -194,17 +207,17 @@ import MainLayout from "@/layouts/main.astro";
                 d="M4 17v2"></path><path d="M5 18H3"></path></svg
             ></span
           >
-          <h3 class="text-xl font-semibold">Support Local Economies</h3>
-          <p class="text-gray-700">
+          <h3 class="text-base md:text-xl font-semibold">Support Local Economies</h3>
+          <p class="text-gray-700 text-base md:text-lg">
             Help small businesses grow while sharing in their success and
             impact.
           </p>
         </div>
         {/* Card 5 */}
         <div
-          class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-start gap-4 flex-1"
+          class="bg-white rounded-xl shadow-lg p-4 md:p-8 flex flex-col items-start gap-3 md:gap-4 flex-1 w-full"
         >
-          <span class="text-3xl text-orange-500"
+          <span class="text-2xl md:text-3xl text-orange-500"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -220,8 +233,8 @@ import MainLayout from "@/layouts/main.astro";
               ></path><circle cx="12" cy="7" r="4"></circle></svg
             ></span
           >
-          <h3 class="text-xl font-semibold">Low Minimums, Broad Access</h3>
-          <p class="text-gray-700">
+          <h3 class="text-base md:text-xl font-semibold">Low Minimums, Broad Access</h3>
+          <p class="text-gray-700 text-base md:text-lg">
             Start investing with as little as $100—open to both accredited and
             non-accredited investors.
           </p>
@@ -339,41 +352,41 @@ import MainLayout from "@/layouts/main.astro";
         </div>
         {/* Key Metrics Grid (full width) */}
         <div class="mb-8 w-full">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 w-full">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-4 w-full">
             <div
-              class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md"
+              class="flex flex-col items-start bg-[#23221e] rounded-lg p-4 md:p-6 min-w-0 md:min-w-[240px] shadow-md w-full"
             >
-              <span class="text-3xl md:text-4xl font-bold text-white">15</span>
-              <span class="text-base text-gray-300">yrs established</span>
+              <span class="text-2xl md:text-4xl font-bold text-white">15</span>
+              <span class="text-sm md:text-base text-gray-300">yrs established</span>
             </div>
             <div
-              class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md"
+              class="flex flex-col items-start bg-[#23221e] rounded-lg p-4 md:p-6 min-w-0 md:min-w-[240px] shadow-md w-full"
             >
-              <span class="text-3xl md:text-4xl font-bold text-white"
+              <span class="text-2xl md:text-4xl font-bold text-white"
                 >$250K</span
               >
-              <span class="text-base text-gray-300">/mo revenue</span>
+              <span class="text-sm md:text-base text-gray-300">/mo revenue</span>
             </div>
             <div
-              class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md"
+              class="flex flex-col items-start bg-[#23221e] rounded-lg p-4 md:p-6 min-w-0 md:min-w-[240px] shadow-md w-full"
             >
-              <span class="text-3xl md:text-4xl font-bold text-white">25%</span>
-              <span class="text-base text-gray-300">target IRR</span>
+              <span class="text-2xl md:text-4xl font-bold text-white">25%</span>
+              <span class="text-sm md:text-base text-gray-300">target IRR</span>
             </div>
             <div
-              class="flex flex-col items-start bg-[#23221e] rounded-lg p-6 min-w-[240px] shadow-md"
+              class="flex flex-col items-start bg-[#23221e] rounded-lg p-4 md:p-6 min-w-0 md:min-w-[240px] shadow-md w-full"
             >
-              <span class="text-3xl md:text-4xl font-bold text-white">98%</span>
-              <span class="text-base text-gray-300">occupancy</span>
+              <span class="text-2xl md:text-4xl font-bold text-white">98%</span>
+              <span class="text-sm md:text-base text-gray-300">occupancy</span>
             </div>
           </div>
         </div>
         {/* Two Tables Side by Side, no background or border, just lines */}
-        <div class="flex flex-col md:flex-row gap-8 w-full">
+        <div class="flex flex-col md:flex-row gap-8 w-full max-w-full">
           {/* Financial Summary Table (Left) */}
-          <div class="flex-1">
+          <div class="overflow-x-auto flex-1 mb-4 md:mb-0">
             <table
-              class="min-w-full text-white"
+              class="w-full min-w-[340px] text-white"
               style="border-collapse:separate; border-spacing:0;"
             >
               <thead>
@@ -406,9 +419,9 @@ import MainLayout from "@/layouts/main.astro";
             </table>
           </div>
           {/* Investment Tiers Table (Right) */}
-          <div class="flex-1">
+          <div class="overflow-x-auto flex-1">
             <table
-              class="min-w-full text-white"
+              class="w-full min-w-[340px] text-white"
               style="border-collapse:separate; border-spacing:0;"
             >
               <thead>
@@ -458,7 +471,7 @@ import MainLayout from "@/layouts/main.astro";
                 </tr>
               </tbody>
             </table>
-            <div class="mt-4 text-sm text-gray-300">
+            <div class="mt-4 text-xs md:text-sm text-gray-300">
               <p class="mb-2">
                 * Returns are calculated using a 20% target IRR, which includes
                 both quarterly distributions and final exit value.
@@ -479,16 +492,16 @@ import MainLayout from "@/layouts/main.astro";
     {/* Final CTA Section */}
     <section
       id="cta"
-      class="w-full bg-[#23221e] text-white py-24 flex flex-col items-center"
+      class="w-full bg-[#23221e] text-white py-10 md:py-24 flex flex-col items-center"
     >
-      <h2 class="text-5xl md:text-6xl font-bold mb-6 text-center">
+      <h2 class="text-2xl md:text-6xl font-bold mb-4 md:mb-6 text-center">
         Invest in America's most reliable businesses.
       </h2>
-      <p class="text-xl text-gray-300 mb-10 text-center max-w-2xl">
+      <p class="text-base md:text-xl text-gray-300 mb-6 md:mb-10 text-center max-w-full md:max-w-2xl">
         Join Mainstreet Capital and start earning real income from
         recession-proof companies—without needing millions or a finance degree.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md items-center">
+      <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md items-center px-4 mt-4">
         <CTAForm />
       </div>
     </section>
