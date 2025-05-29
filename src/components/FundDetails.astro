@@ -2,7 +2,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FundChart } from "@/components/FundChart";
-import CTAForm from "./CTAForm.astro";
 
 const fundJson = {
   initial_investment: 10000,
@@ -50,7 +49,9 @@ function formatCurrency(value: number): string {
 
 <main class="bg-[#23221e] min-h-screen text-white font-sans pt-10">
   <section class="max-w-6xl mx-auto pt-16 pb-12 px-2 md:px-4">
-    <div class="flex flex-col md:flex-row md:items-start gap-y-4 md:gap-y-0 md:gap-10">
+    <div
+      class="flex flex-col md:flex-row md:items-start gap-y-4 md:gap-y-0 md:gap-10"
+    >
       {/* Main Content */}
       <div class="flex-1 min-w-0">
         <h1
@@ -73,33 +74,45 @@ function formatCurrency(value: number): string {
         {/* Key Stats */}
         <div class="w-full md:mb-8 px-2 md:px-0">
           <div class="flex flex-col md:flex-row gap-0 md:gap-4">
-            <div class="flex-1 flex items-center justify-between bg-[#e3eaec] rounded-lg md:rounded-lg px-4 py-3 mb-2 md:mb-0">
+            <div
+              class="flex-1 flex items-center justify-between bg-[#e3eaec] rounded-lg md:rounded-lg px-4 py-3 mb-2 md:mb-0"
+            >
               <div class="flex-1">
                 <div class="text-base md:text-lg text-gray-800 font-normal">
                   Annualized return target
                 </div>
               </div>
-              <div class="text-xl md:text-3xl font-bold text-gray-900 pl-4 whitespace-nowrap">
+              <div
+                class="text-xl md:text-3xl font-bold text-gray-900 pl-4 whitespace-nowrap"
+              >
                 8.6%
               </div>
             </div>
-            <div class="flex-1 flex items-center justify-between bg-[#e3eaec] rounded-lg md:rounded-lg px-4 py-3 mb-2 md:mb-0">
+            <div
+              class="flex-1 flex items-center justify-between bg-[#e3eaec] rounded-lg md:rounded-lg px-4 py-3 mb-2 md:mb-0"
+            >
               <div class="flex-1">
                 <div class="text-base md:text-lg text-gray-800 font-normal">
                   Initial raise target
                 </div>
               </div>
-              <div class="text-xl md:text-3xl font-bold text-gray-900 pl-4 whitespace-nowrap">
+              <div
+                class="text-xl md:text-3xl font-bold text-gray-900 pl-4 whitespace-nowrap"
+              >
                 $1.5M
               </div>
             </div>
-            <div class="flex-1 flex items-center justify-between bg-[#e3eaec] rounded-lg md:rounded-lg px-4 py-3 mb-2 md:mb-0">
+            <div
+              class="flex-1 flex items-center justify-between bg-[#e3eaec] rounded-lg md:rounded-lg px-4 py-3 mb-2 md:mb-0"
+            >
               <div class="flex-1">
                 <div class="text-base md:text-lg text-gray-800 font-normal">
                   Annualized distribution rate (target)
                 </div>
               </div>
-              <div class="text-xl md:text-3xl font-bold text-gray-900 pl-4 whitespace-nowrap">
+              <div
+                class="text-xl md:text-3xl font-bold text-gray-900 pl-4 whitespace-nowrap"
+              >
                 6.1%
               </div>
             </div>
@@ -123,7 +136,9 @@ function formatCurrency(value: number): string {
                 </tr>
                 <tr class="border-b border-dashed border-gray-700">
                   <td class="py-1 md:py-2 text-gray-400">Objective</td>
-                  <td class="py-1 md:py-2 text-right font-semibold text-orange-500">
+                  <td
+                    class="py-1 md:py-2 text-right font-semibold text-orange-500"
+                  >
                     Income & Appreciation
                   </td>
                 </tr>
@@ -134,7 +149,9 @@ function formatCurrency(value: number): string {
                   </td>
                 </tr>
                 <tr>
-                  <td class="py-1 md:py-2 text-gray-400"> Current NAV per share </td>
+                  <td class="py-1 md:py-2 text-gray-400">
+                    Current NAV per share
+                  </td>
                   <td class="py-1 md:py-2 text-right font-semibold text-white"
                     >$10.00</td
                   >
@@ -142,7 +159,13 @@ function formatCurrency(value: number): string {
               </tbody>
             </table>
             <div class="mt-4">
-              <CTAForm />
+              <a href="https://tally.so/r/3yREKp" target="_blank">
+                <button
+                  class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded transition-colors"
+                  >Get Started</button
+                >
+              </a>
+              <!-- <CTAForm /> -->
             </div>
           </CardContent>
         </Card>
@@ -151,7 +174,9 @@ function formatCurrency(value: number): string {
     <div class="flex flex-col gap-4">
       {/* Tabs */}
       <div class="border-b border-gray-700 mb-8">
-        <nav class="flex w-full justify-between gap-2 md:gap-6 text-sm md:text-base font-medium flex-wrap px-2 md:px-0">
+        <nav
+          class="flex w-full justify-between gap-2 md:gap-6 text-sm md:text-base font-medium flex-wrap px-2 md:px-0"
+        >
           <a
             href="#fund-strategy"
             class="py-2 border-b-2 border-orange-500 text-white"
@@ -180,9 +205,13 @@ function formatCurrency(value: number): string {
       </div>
       {/* Fund Strategy Section */}
       <section id="fund-strategy" class="scroll-mt-24">
-        <div class="flex flex-col md:flex-row gap-y-8 md:gap-y-0 md:gap-10 px-2 md:px-0">
+        <div
+          class="flex flex-col md:flex-row gap-y-8 md:gap-y-0 md:gap-10 px-2 md:px-0"
+        >
           <div class="flex-1 min-w-0">
-            <h2 class="text-xl md:text-2xl font-serif font-semibold mb-2 md:mb-4 text-white">
+            <h2
+              class="text-xl md:text-2xl font-serif font-semibold mb-2 md:mb-4 text-white"
+            >
               Fund strategy
             </h2>
             <p class="mb-4 text-base md:text-lg text-gray-300 max-w-2xl">
@@ -203,7 +232,9 @@ function formatCurrency(value: number): string {
               <span class="font-semibold text-white">
                 Investment strategy drivers:
               </span>
-              <ul class="list-disc pl-6 mt-2 space-y-2 text-gray-300 break-words">
+              <ul
+                class="list-disc pl-6 mt-2 space-y-2 text-gray-300 break-words"
+              >
                 <li>
                   <span class="font-medium text-orange-500 underline">
                     Blue-collar backbone businesses
@@ -274,7 +305,9 @@ function formatCurrency(value: number): string {
             </div>
           </div>
           {/* Right column: Asset type and allocation */}
-          <div class="w-full md:w-80 flex-shrink-0 flex flex-col gap-8 mt-4 md:mt-0">
+          <div
+            class="w-full md:w-80 flex-shrink-0 flex flex-col gap-8 mt-4 md:mt-0"
+          >
             <div>
               <div class="text-base font-bold text-white md:mt-6 mb-2">
                 Asset type
@@ -354,7 +387,9 @@ function formatCurrency(value: number): string {
         <div
           class="mb-10 grid grid-cols-2 md:grid-cols-4 bg-[#181716] rounded-xl shadow-sm overflow-hidden"
         >
-          <div class="flex flex-col items-center justify-center px-4 py-8 border-b border-r border-gray-700 md:border-b-0 md:border-r md:last:border-r-0">
+          <div
+            class="flex flex-col items-center justify-center px-4 py-8 border-b border-r border-gray-700 md:border-b-0 md:border-r md:last:border-r-0"
+          >
             <div class="text-base font-medium text-gray-400 mb-2 text-center">
               Initial investment value
             </div>
@@ -362,7 +397,9 @@ function formatCurrency(value: number): string {
               {formatCurrency(fundJson.initial_investment)}
             </div>
           </div>
-          <div class="flex flex-col items-center justify-center px-4 py-8 border-b md:border-b-0 border-gray-700 md:border-r md:last:border-r-0">
+          <div
+            class="flex flex-col items-center justify-center px-4 py-8 border-b md:border-b-0 border-gray-700 md:border-r md:last:border-r-0"
+          >
             <div class="text-base font-medium text-gray-400 mb-2 text-center">
               Total appreciation
             </div>
@@ -370,7 +407,9 @@ function formatCurrency(value: number): string {
               {formatCurrency(fundJson.total_appreciation)}
             </div>
           </div>
-          <div class="flex flex-col items-center justify-center px-4 py-8 border-r md:border-r md:last:border-r-0 border-gray-700">
+          <div
+            class="flex flex-col items-center justify-center px-4 py-8 border-r md:border-r md:last:border-r-0 border-gray-700"
+          >
             <div class="text-base font-medium text-gray-400 mb-2 text-center">
               Total distributions
             </div>
@@ -560,7 +599,13 @@ function formatCurrency(value: number): string {
         <div
           class="flex flex-col md:flex-row gap-4 justify-center w-1/2 mx-auto"
         >
-          <CTAForm />
+          <a href="https://tally.so/r/3yREKp" target="_blank">
+            <button
+              class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded transition-colors"
+              >Get Started</button
+            >
+          </a>
+          <!-- <CTAForm /> -->
         </div>
       </section>
     </div>

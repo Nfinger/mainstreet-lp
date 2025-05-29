@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import { useState } from 'react';
 
 // Component Imports
-import CTAForm from "@/components/CTAForm.astro";
+
 import { Button } from "@/components/ui/button";
 import MainLayout from "@/layouts/main.astro";
 
@@ -29,7 +29,7 @@ import MainLayout from "@/layouts/main.astro";
         <a href="#why-invest" class="hover:text-orange-400 content-center transition">Why Invest</a>
         <a href="#demo-deal" class="hover:text-orange-400 content-center transition">Demo Deal</a>
         <a href="/fund" class="hover:text-orange-400 content-center transition">Fund Details</a>
-        <a href="#cta" class="cursor-pointer">
+        <a href="https://tally.so/r/3yREKp" target="_blank" class="cursor-pointer">
           <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded transition-colors">Get Started</Button>
         </a>
       </nav>
@@ -73,7 +73,10 @@ import MainLayout from "@/layouts/main.astro";
           repair, and dry cleaning—with as little as $100.
         </p>
         <div class="mb-2">
-          <CTAForm />
+          <a href="https://tally.so/r/3yREKp" target="_blank">
+            <button class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded transition-colors">Get Started</button>
+          </a>
+          <!-- <CTAForm /> -->
         </div>
         <div class="text-sm text-gray-400 mt-2">
           Start investing in less than 5 minutes and with as little as $100.
@@ -311,7 +314,7 @@ import MainLayout from "@/layouts/main.astro";
         </div>
       </div>
       <div class="mt-12">
-        <a href="#cta">
+        <a href="https://tally.so/r/3yREKp" target="_blank">
           <Button
             className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors"
           >
@@ -503,7 +506,10 @@ import MainLayout from "@/layouts/main.astro";
         recession-proof companies—without needing millions or a finance degree.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md items-center px-4 mt-4">
-        <CTAForm />
+        <a href="https://tally.so/r/3yREKp" target="_blank">
+          <button class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded transition-colors">Get Started</button>
+        </a>ƒ
+        <!-- <CTAForm /> -->
       </div>
     </section>
     {/* Footer */}
